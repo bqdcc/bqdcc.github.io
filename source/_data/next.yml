@@ -43,6 +43,7 @@ rss:
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
+  # 创建时间
   since: 2017
 
   # Icon between year and copyright info.
@@ -53,9 +54,9 @@ footer:
   # -------------------------------------------------------------
   # Hexo link (Powered by Hexo).
   powered: true
-  
+
   theme:
-    # Theme & scheme info link (Theme - NexT.scheme).
+    # 显示底部推广信息 & scheme info link (Theme - NexT.scheme).
     enable: false
     # Version info of NexT after scheme info (vX.X.X).
     version: false
@@ -105,7 +106,7 @@ menu_settings:
   badges: false
 
 # ---------------------------------------------------------------
-# Scheme Settings
+# Scheme Settings 主题
 # ---------------------------------------------------------------
 
 # Schemes
@@ -716,7 +717,7 @@ pace: false
 pace_theme: pace-theme-minimal
 
 # Canvas-nest
-# Dependencies: https://github.com/theme-next/theme-next-canvas-nest
+# Dependencies: https://github.com/theme-next/theme-next-canvas-nest 背景动画
 canvas_nest: true
 
 # JavaScript 3D library.
