@@ -4,9 +4,13 @@ date: 2017-11-03 15:25:46
 tags:
 ---
 
-我可以写点东西了
+我可以写点东西了 
+[markdown语法](https://www.appinn.com/markdown/)
 hexo generate -- 生成器  --wacth
 hexo server 自动更新
+
+新建文章
+hexo new [layout] <title>
 
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
