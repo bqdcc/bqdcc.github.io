@@ -102,6 +102,25 @@ tags: javascript
     console.log(a - - b);//3
 ```
 
+#### js去除字符串两端空格
+[MDN知识点](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)
+用处有 处理输入框的输入(连续的空格)
+```javascript
+    var orig = '   foo  ';
+    console.log(orig.trim()); // 'foo'
+    // 另一个.trim()例子，只从一边删除
+    var orig = 'foo    ';
+    console.log(orig.trim()); // 'foo'
+```
+##### 兼容旧环境
+如果 trim() 不存在，可以在所有代码前执行下面代码
+```javascript
+    if (!String.prototype.trim) {
+        String.prototype.trim = function () {
+            return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+        };
+    }
+```
 
 
 
