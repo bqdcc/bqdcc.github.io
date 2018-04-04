@@ -122,6 +122,19 @@ tags: javascript
     }
 ```
 
+#### null 与 undefined
+undefined ----- 不存在
+null      ----- 存在但没有
+```javascript
+    undefined == null //结果 true
+    undefined === null //结果 false
+    var obj = {a:1,b:2}
+    obj.c == null //结果 true
+    obj.c === null //结果 false
+    obj.c === undefined //结果 true
+    //判断对象是否存在对应属性时建议用双等号 其他等值判断建议用三等号
+```
+
 
 
 
