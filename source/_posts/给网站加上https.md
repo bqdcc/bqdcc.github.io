@@ -28,7 +28,7 @@ tags: nginx
 [腾讯云](https://buy.cloud.tencent.com/ssl?fromSource=ssl&from=qcloudHpHeaderSsl)点击打开
 单域名免费版 --- 如 `likecc.top` `blog.likecc.top` 为两个域名 同一主域最多只能申请20张亚洲诚信品牌免费型DV版SSL证书
 
-![图1](给网站加上https/图1.png)
+![图1](./图1.png)
 
 #### nginx配置https
 配置文件如下
