@@ -37,16 +37,6 @@ tags: javascript
     }
     codeFunc[code]();
 ```
-[原作者的话：](https://mp.weixin.qq.com/s/cInFsWjCRGtKnZ17IfFXUw)
-[我以前的后端领导跟我讲过
-
-写代码就跟建管道一样
-
-一条管道永远是最易维护的
-
-所以我们要把预先不要的东西放到最上面
-
-比如]
 
 ```javascript
     if(isA){
@@ -57,24 +47,6 @@ tags: javascript
 
     if(!isA) return;
     func(){...}
-```
-
-#### 链式三元运算符
-我们经常这样做
-```javascript
-    //根据A的值为B赋值
-    //如果A大于5，则赋值200，否则赋值1
-    var B = A > 5 ? 200 : 1;
-```
-但如果你想这么做，当A多少时如何，当A大于多少时如何，链式三元运算非常好用
-```javascript
-    var B = 
-    A < 5 ? 200 : 
-    A < 10 ? 300 :
-    A < 15 ? 400 :
-    A < 20 ? 500 :
-    1;
-    //比 if(A<5) 更有效率
 ```
 
 #### 双向绑定
