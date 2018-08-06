@@ -9,6 +9,13 @@ tags: react-native android
 第三方深度定制过的android系统有此类功能,如：三星、小米、魅族、华为等。
 各方产商定制方法各不相同,我选择使用第三方开源的项目实现。
 
+## 环境
+```json
+    "react": "16.3.1",
+    "react-native": "0.55.4",
+    "ShortcutBadger":"1.1.22" // 这个不是 package.json 的 dependencies
+```
+
 ## ShortcutBadger 引入
 1.下载 
 通过 git
