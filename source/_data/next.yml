@@ -652,7 +652,7 @@ tabs:
 # Reading progress bar
 # Dependencies: https://github.com/theme-next/theme-next-reading-progress
 reading_progress:
-  enable: false
+  enable: true
   color: "#37c6c0"
   height: 2px
 
@@ -685,7 +685,7 @@ motion:
 # Please, choose only any one variant, do not need to install both.
 # For install 2.x: https://github.com/theme-next/theme-next-fancybox
 # For install 3.x: https://github.com/theme-next/theme-next-fancybox3
-fancybox: false
+fancybox: true
 
 # Added switch option for separated repo in 6.0.0.
 # Dependencies: https://github.com/theme-next/theme-next-fastclick
@@ -697,7 +697,7 @@ lazyload: false
 
 # Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
-pace: false
+pace: true
 # Themes list:
 #pace-theme-big-counter
 #pace-theme-bounce
