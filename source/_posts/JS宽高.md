@@ -26,12 +26,13 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 <!--more-->
 
 ## window 相关宽高
-单位:像素
+
 ### 内部和外部 宽高
-[window.innerWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/innerWidth) 
-[window.innerHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/innerHeight) 
-[window.outerWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/outerWidth) 
-[window.outerHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/outerHeight)
+[window.innerWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/innerWidth): 浏览器视口（viewport）宽度（单位：像素）
+[window.innerHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/innerHeight): 浏览器窗口的视口（viewport）高度（单位：像素）
+[window.outerWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/outerWidth): 整个浏览器窗口的宽度，包括侧边栏（如果存在）、窗口镶边（window chrome）和调正窗口大小的边框（window resizing borders/handles）
+[window.outerHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/outerHeight): 整个浏览器窗口的高度（单位：像素），包括侧边栏（如果存在）、窗口镶边（window chrome）和窗口调正边框（window resizing borders/handles）。
+
 
 ![innerWidth&outerWidth](./innerWidth&outerWidth.png)
 ![innerHeight&outerHeight](./innerHeight&outerHeight.gif)
@@ -51,9 +52,37 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 [window.screenLeft](https://www.w3cschool.cn/jsref/prop-win-screenleft.html): 浏览器窗口相对于屏幕左边的距离
 [window.screen.availTop](https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/availTop): 浏览器窗口在屏幕上的可占用空间上边距离屏幕上边界的像素值
 [window.screen.availLeft](https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/availLeft): 浏览器可用空间左边距离屏幕（系统桌面）左边界的距离
-
+ 
 ![screen.height&screen.availHeight](./screen.height&screen.availHeight.gif)
 ![screen](./screen.jpg)
+
+## document 相关宽高
+
+### client
+[Element.clientHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight): 元素的可视部分高度,padding+content,但不包括水平滚动条、边框和外边距
+[Element.clientWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientWidth): 元素的可视部分宽度,padding+content,但不包括垂直滚动条、边框和外边距
+[Element.clientLeft](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientLeft): 元素的左边框的宽度,border-left的border-width
+[Element.clientTop](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientTop): 元素的上边框的高度度,border-top的border-width
+
+![Dimensions-client](./Dimensions-client.png)
+
+### offset
+[HTMLElement.offsetParent](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent): 返回一个指向最近的（closest，指包含层级上的最近）包含该元素的定位元素。如果没有定位的元素，则 offsetParent 为最近的 table, table cell 或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null。
+[HTMLElement.offsetHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetHeight): 该元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。
+[HTMLElement.offsetWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetWidth): 元素的布局宽度。
+[HTMLElement.offsetLeft](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetLeft): 当前元素左上角相对于  HTMLElement.offsetParent 节点的左边界偏移的像素值。
+[HTMLElement.offsetTop](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop): 当前元素相对于其 offsetParent 元素的顶部的距离。
+
+![Dimensions-offset](./Dimensions-offset.png)
+![offsetLeft&offsetTop](./offsetLeft&offsetTop.png)
+
+### scroll 
+[Element.scrollHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight): 元素内容的实际高度
+[Element.scrollWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollWidth): 元素的实际宽度
+[Element.scrollTop](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop): 元素被卷起的高度
+[Element.scrollLeft](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollLeft): 元素被卷起的宽度
+
+![scroll](./scroll.png)
 
 
 ## 参考

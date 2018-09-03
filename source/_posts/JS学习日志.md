@@ -1,7 +1,7 @@
 ---
 title: JS学习日志
 date: 2018-01-19 20:40:41
-tags: javascript
+tags: JavaScript
 ---
 
 #### [好看的if...else](https://mp.weixin.qq.com/s/cInFsWjCRGtKnZ17IfFXUw)

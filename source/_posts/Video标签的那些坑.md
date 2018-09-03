@@ -1,7 +1,7 @@
 ---
 title: Video标签的那些坑
 date: 2018-07-16 14:52:46
-tags: 浏览器 chrome 
+tags: [浏览器,chrome]
 ---
 
 ## mp4 视频 无法在 chrome 中播放

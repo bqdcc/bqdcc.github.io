@@ -1,7 +1,7 @@
 ---
 title: react-native应用角标
 date: 2018-08-03 15:04:10
-tags: react-native android
+tags: [react-native,android]
 ---
 
 ## 角标
