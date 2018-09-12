@@ -77,8 +77,8 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ![offsetLeft&offsetTop](./offsetLeft&offsetTop.png)
 
 ### scroll 
-[Element.scrollHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight): 元素内容的实际高度
-[Element.scrollWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollWidth): 元素的实际宽度
+[Element.scrollHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight): ,当内容小于 clientHeight 时 scrollHeight == clientHeight, 当内容大于 clientHeight 时, scrollHeight 表示元素内容的实际高度
+[Element.scrollWidth](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollWidth): 当内容小于 clientHeight 时 scrollWidth == clientWidth, 当内容大于 clientWidth 时, scrollWidth 表示元素内容的实际宽度
 [Element.scrollTop](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop): 元素被卷起的高度
 [Element.scrollLeft](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollLeft): 元素被卷起的宽度
 
