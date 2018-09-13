@@ -66,6 +66,11 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 
 ![Dimensions-client](./Dimensions-client.png)
 
+```javascrpit
+    var w= document.documentElement.clientWidth || document.body.clientWidth;
+    var h= document.documentElement.clientHeight || document.body.clientHeight;
+```
+
 ### offset
 [HTMLElement.offsetParent](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent): 返回一个指向最近的（closest，指包含层级上的最近）包含该元素的定位元素。如果没有定位的元素，则 offsetParent 为最近的 table, table cell 或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null。
 [HTMLElement.offsetHeight](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetHeight): 该元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。
@@ -82,8 +87,33 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 [Element.scrollTop](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop): 元素被卷起的高度
 [Element.scrollLeft](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollLeft): 元素被卷起的宽度
 
+```html
+    body{
+        width: 500px;
+        height: 500px;
+        border:10px solid #2a6caa;
+        margin: 50px;
+    }
+    #elem{
+        width: 150px;
+        height: 100px;
+        overflow: auto;
+        margin:100px;
+        border:1px solid #779;
+    }
+```
+
+其中 当 
+```html
+    <!DOCTYPE html>
+```
 ![scroll](./scroll.png)
 
+可是
+```html
+    <!DOCTYPE >
+```
+![documentElement](./document.documentElement.png)
 
 ## 参考
 [JS/jQuery宽高的理解和应用](https://www.imooc.com/learn/608)
