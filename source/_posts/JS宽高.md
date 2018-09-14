@@ -119,7 +119,7 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ![Event对象坐标](./Event对象坐标.jpg)
 ![Event2](./Event2.png)
 
-如果我做了更改
+可是有点问题
 
 ## 参考
 [JS/jQuery宽高的理解和应用](https://www.imooc.com/learn/608)
