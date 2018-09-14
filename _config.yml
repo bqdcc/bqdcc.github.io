@@ -80,5 +80,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/bqdcc/bqdcc.github.io
+  repo: https://gh_token@github.com/bqdcc/bqdcc.github.io.git
   branch: master
