@@ -23,7 +23,7 @@ tags: [react-native,android]
 或 直接下载zip文件 
 [ShortcutBadger github地址](https://github.com/leolin310148/ShortcutBadger)
 2.解压 将文件放入工程 android 文件夹中
-![图1](./目录结构.png)
+{% asset_img 目录结构.png react-native应用角标 %}
 也可将文件放在其他位置
 
 <!--more-->
@@ -32,7 +32,7 @@ tags: [react-native,android]
 1.android/settings.gradle
 文件中加入
 `include ':ShortcutBadger'`
-![图2](./settings1.png)
+{% asset_img settings1.png react-native应用角标 %}
 如果 ShortcutBadger 未放在 android 文件夹中
 需要添加
 `project(':ShortcutBadger').projectDir = new File(rootProject.projectDir, '此处为相对于 settings.gradle 文件的地址')`
@@ -49,7 +49,7 @@ tags: [react-native,android]
     }
     ...
 ```
-![图3](./build.gradle.png)
+{% asset_img build.gradle.png react-native应用角标 %}
 
 3.android/app/build.gradle
 为 ShortcutBadger 添加依赖项
@@ -61,7 +61,7 @@ tags: [react-native,android]
     }
     ....
 ```
-![图4](./app-build.gradle.png)
+{% asset_img app-build.gradle.png react-native应用角标 %}
 
 4.android/app/src/main/AndroidManifest.xml
 添加 app 权限
@@ -78,9 +78,10 @@ tags: [react-native,android]
 
 ## 实现原生与ReactNative通信
 android 通过 Android Studio 编辑(我是这么做的,当然其他编辑器也可以)
-![图5](./新建类.png)
+{% asset_img 新建类.png react-native应用角标 %}
 1.新建 BadgeModule(类) 继承 ReacContextBaseJavaModule
-![图6](./新建类1.png)
+{% asset_img 新建类1.png react-native应用角标 %}
+
 ```java
     package com.jgapp;//包名 请更改
 
@@ -230,14 +231,15 @@ android 通过 Android Studio 编辑(我是这么做的,当然其他编辑器也
 
     Badge.showBadge(5);
 ```
+{% asset_img badge.png react-native应用角标 %}
 ![图7](./badge.png)
 其中 `Badge.removeCount()` 方法和 `Badge.showBadge(0)` 其实是一样的 因为...
-![图8](./ShortcutBadger2.png)
+{% asset_img ShortcutBadger2.png react-native应用角标 %}
 
 ## 查看 ShortcutBadger 可使用的方法
 查看 `ShortcutBadger.java` 
-![图9](./目录结构2.png)
-![图10](./ShortcutBadger.png)
+{% asset_img 目录结构2.png react-native应用角标 %}
+{% asset_img ShortcutBadger.png react-native应用角标 %}
 
 ## 参考
 
