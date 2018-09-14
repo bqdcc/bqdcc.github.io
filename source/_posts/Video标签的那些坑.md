@@ -8,6 +8,7 @@ tags: [浏览器,chrome]
 
 chrome 支持 H.264 格式的视频
 
+{% asset_img H.264.jpg 图1 %}
 ![图1](./H.264.jpg)
 
 为了推广H.264，MPEG-LA规定，只要你的视频用于互联网上的免费播放，就可以无偿获得使用许可证。所以YouTube可以免费使用MPEG-LA许可证。
