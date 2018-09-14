@@ -115,6 +115,12 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ```
 ![documentElement](./document.documentElement.png)
 
+### Event
+![Event对象坐标](./Event对象坐标.jpg)
+![Event2](./Event2.png)
+
+
+
 ## 参考
 [JS/jQuery宽高的理解和应用](https://www.imooc.com/learn/608)
 [JavaScript中的各种宽高以及位置总结](https://segmentfault.com/a/1190000002545307)

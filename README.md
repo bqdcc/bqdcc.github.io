@@ -1,2 +1,1 @@
-# blog
-我的个人博客
+[匆匆的个人笔记](https://blog.likecc.top)
