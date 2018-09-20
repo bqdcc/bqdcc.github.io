@@ -119,7 +119,65 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ![Event对象坐标](./Event对象坐标.jpg)
 ![Event2](./Event2.png)
 
-有问题
+## 应用场景
+### 懒加载
+何时:
+
+    元素距离文档顶部距离 小于 文档可视区域
+
+文档可视区域(`window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight`)
+元素距离文档顶部距离
+[Element.getBoundingClientRect()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
+
+![getBoundingClientRect](./getBoundingClientRect.png)
+![getBoundingClientRect()](./getBoundingClientRect1.png)
+
+### 是否滚动到顶部
+何时:
+
+    Element.scrollTop == 0
+
+### 是否滚动到底部
+何时:
+
+    元素可视区域 + Element.scrollTop >= Element.scrollHeight
+
+### 滚动轴宽度计算
+何时:
+
+    定义一个元素 `overflow-y:scroll`
+    1.Element.offsetWidth - clientWidth
+    2.元素无滚动轴状态下 clientWidth - 有滚动轴状态下 clientWidth
+    Element.remove()
+
+```javascript
+    /*
+    * @return Number 
+    */
+    function getScrollBarWidth(){
+        var elem = document.createElement('div'),
+        noScrollBarClientWidth,
+        haveScrollBarClientWidth,
+        scrollBarWidth,
+        styles={
+            width:'100px',
+            height:'100px',
+        };
+        for (const key in styles) {
+            if (styles.hasOwnProperty(key)) {
+                elem.style[key] = styles[key];
+            }
+        }
+        noScrollBarClientWidth = elem.clientWidth;
+        elem.style.overflowY = 'scroll';
+        haveScrollBarClientWidth = elem.clientWidth;
+        scrollBarWidth = noScrollBarClientWidth - haveScrollBarClientWidth;
+        elem.remove();
+        return scrollBarWidth;
+    }
+```
+Tip:mac 系统下滚动轴宽度为 0
+
 
 ## 参考
 [JS/jQuery宽高的理解和应用](https://www.imooc.com/learn/608)

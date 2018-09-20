@@ -22,16 +22,27 @@
     </style>
 </head>
 <body>
-    <div id="elem" >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut minima, doloremque excepturi exercitationem impedit numquam suscipit obcaecati optio repudiandae? Deleniti, ea aspernatur. Quidem iusto nisi omnis corporis dicta laudantium harum.
-    </div>
     <script>
-        elem.onclick = function(event){
-            console.log('clientX:'+event.clientX+'\tclientY:'+event.clientY);
-            console.log('offsetX:'+event.offsetX+'\toffsetY:'+event.offsetY);
-            console.log('screenX:'+event.screenX+'\tscreenY:'+event.screenY);
-            console.log('pageX:'+event.pageX+'\tpageY:'+event.pageY);
-            console.log('X:'+event.x+'\tY:'+event.y);
+        function getScrollBarWidth(){
+            var elem = document.createElement('div'),
+            noScrollBarClientWidth,
+            haveScrollBarClientWidth,
+            scrollBarWidth,
+            styles={
+                width:'100px',
+                height:'100px',
+            };
+            for (const key in styles) {
+                if (styles.hasOwnProperty(key)) {
+                    elem.style[key] = styles[key];
+                }
+            }
+            noScrollBarClientWidth = elem.clientWidth;
+            elem.style.overflowY = 'scroll';
+            haveScrollBarClientWidth = elem.clientWidth;
+            scrollBarWidth = noScrollBarClientWidth - haveScrollBarClientWidth;
+            elem.remove();
+            return scrollBarWidth;
         }
     </script>
 </body>
