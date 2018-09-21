@@ -132,6 +132,50 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ![getBoundingClientRect](./getBoundingClientRect.png)
 ![getBoundingClientRect()](./getBoundingClientRect1.png)
 
+```javascript
+    const imageLoad = (function () {
+        var img = new Image();
+        var elem = null;
+        img.onload = function () {
+            elem.src = img.src;
+        }
+        return {
+            setSrc: function (el, src) {
+                elem = el;
+                img.src = src;
+            }
+        }
+    })();
+
+    const imageIsLoad = (function () {
+        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        var elemTop = 0;
+        return function (elem) {
+            elemTop = elem.getBoundingClientRect().top;
+            return elemTop < clientHeight;
+        }
+    })();
+
+    const imagesScrollLoad = (function () {
+        var imgs = Array.from(document.querySelectorAll('img'));
+        var timer = null;
+        return function () {
+            if(!timer&&imgs.length){
+                timer = setTimeout(function () {
+                    timer = null;
+                    for (const i in imgs) {
+                        imageIsLoad(imgs[i])&&
+                        (imageLoad.setSrc(imgs[i], imgs[i].getAttribute('data-src')),imgs.splice(i, 1));
+                    }
+                }, 500);
+            }
+
+        }
+    })();
+
+    window.onscroll = imagesScrollLoad;
+```
+
 ### 是否滚动到顶部
 何时:
 
@@ -152,6 +196,7 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 
 ```javascript
     /*
+    * 计算滚动轴宽度
     * @return Number 
     */
     function getScrollBarWidth(){

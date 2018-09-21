@@ -1,49 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{
-            width: 500px;
-            height: 500px;
-            border:10px solid #2a6caa;
-            margin: 50px;
-        }
-        #elem{
-            width: 150px;
-            height: 100px;
+        #elem {
+            height: 2000px;
             overflow: auto;
-            margin:100px;
-            border:1px solid #779;
+            margin: 100px;
+            border: 1px solid #779;
         }
     </style>
 </head>
+
 <body>
+    <div id="elem">
+
+    </div>
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="./source/_posts/JS宽高/Event2.png" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg" alt="">
+    <img data-src="./source/_posts/JS宽高/Event对象坐标.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
+    <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
+        alt="">
     <script>
-        function getScrollBarWidth(){
-            var elem = document.createElement('div'),
-            noScrollBarClientWidth,
-            haveScrollBarClientWidth,
-            scrollBarWidth,
-            styles={
-                width:'100px',
-                height:'100px',
-            };
-            for (const key in styles) {
-                if (styles.hasOwnProperty(key)) {
-                    elem.style[key] = styles[key];
+        var imageLoad = (function () {
+            var img = new Image();
+            var elem = null;
+            img.onload = function () {
+                elem.src = img.src;
+            }
+            return {
+                setSrc: function (el, src) {
+                    elem = el;
+                    img.src = src;
                 }
             }
-            noScrollBarClientWidth = elem.clientWidth;
-            elem.style.overflowY = 'scroll';
-            haveScrollBarClientWidth = elem.clientWidth;
-            scrollBarWidth = noScrollBarClientWidth - haveScrollBarClientWidth;
-            elem.remove();
-            return scrollBarWidth;
-        }
+        })();
+
+        var imageIsLoad = (function () {
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            var elemTop = 0;
+            return function (elem) {
+                elemTop = elem.getBoundingClientRect().top;
+                return elemTop < clientHeight;
+            }
+        })();
+
+        var imagesScrollLoad = (function () {
+            var imgs = Array.from(document.querySelectorAll('img'));
+            var timer = null;
+            return function () {
+                if(!timer&&imgs.length){
+                    timer = setTimeout(function () {
+                        timer = null;
+                        for (const i in imgs) {
+                            imageIsLoad(imgs[i])&&
+                            (imageLoad.setSrc(imgs[i], imgs[i].getAttribute('data-src')),imgs.splice(i, 1));
+                        }
+                    }, 500);
+                }
+
+            }
+        })()
+
+        window.onscroll = imagesScrollLoad;
     </script>
 </body>
+
 </html>
