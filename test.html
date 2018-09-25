@@ -46,13 +46,11 @@
     <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
         alt="">
     <script>
-        var imageLoad = function () {
-            return {
+        var imageLoad =  {
                 setSrc: function (el, src) {
                     el.src = src;
                 }
             }
-        }
 
         var imageIsLoad = (function () {
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;

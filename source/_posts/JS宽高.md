@@ -133,13 +133,11 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ![getBoundingClientRect()](./getBoundingClientRect1.png)
 
 ```javascript
-    const imageLoad = function () {
-        return {
-            setSrc: function (el, src) {
-                el.src = src;
+    const imageLoad = {
+                setSrc: function (el, src) {
+                    el.src = src;
+                }
             }
-        }
-    }
 
     const imageIsLoad = (function () {
         var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
