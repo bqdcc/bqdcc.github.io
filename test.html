@@ -46,19 +46,13 @@
     <img data-src="http://seopic.699pic.com/photo/50035/0520.jpg_wh1200.jpg" src="http://seopic.699pic.com/photo/50052/5125.jpg_wh1200.jpg"
         alt="">
     <script>
-        var imageLoad = (function () {
-            var img = new Image();
-            var elem = null;
-            img.onload = function () {
-                elem.src = img.src;
-            }
+        var imageLoad = function () {
             return {
                 setSrc: function (el, src) {
-                    elem = el;
-                    img.src = src;
+                    el.src = src;
                 }
             }
-        })();
+        }
 
         var imageIsLoad = (function () {
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
@@ -84,7 +78,7 @@
                 }
 
             }
-        })()
+        })();
 
         window.onscroll = imagesScrollLoad;
     </script>
