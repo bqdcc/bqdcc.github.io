@@ -116,6 +116,17 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ![documentElement](./document.documentElement.png)
 
 ### Event
+
+```javascript
+    document.onclick = function(event){
+        console.log('clientX: '+event.clientX,', clientY: '+event.clientY);
+        console.log('screenX: '+event.screenX,', screenY: '+event.screenY);
+        console.log('offsetX: '+event.offsetX,', offsetY: '+event.offsetY);
+        console.log('pageX: '+event.pageX,', pageY: '+event.pageY);
+        console.log('x: '+event.x,', y: '+event.y);
+    }
+```
+
 ![Event对象坐标](./Event对象坐标.jpg)
 ![Event2](./Event2.png)
 
@@ -133,12 +144,14 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
 ![getBoundingClientRect()](./getBoundingClientRect1.png)
 
 ```javascript
+    /* 图片加载 */
     const imageLoad = {
                 setSrc: function (el, src) {
                     el.src = src;
                 }
             }
 
+    /* 是否加载 */
     const imageIsLoad = (function () {
         var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
         var elemTop = 0;
@@ -147,7 +160,7 @@ document 对象是 window 对象的一部分,如 `document.body;window.document.
             return elemTop < clientHeight;
         }
     })();
-
+    
     const imagesScrollLoad = (function () {
         var imgs = Array.from(document.querySelectorAll('img'));
         var timer = null;
