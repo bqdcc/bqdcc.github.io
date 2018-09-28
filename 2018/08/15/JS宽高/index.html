@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.0.1">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+  
+  <meta name="keywords" content="JavaScript," />
+
+
+<meta name="description" content="两个问题1.window 和 document 的区别?window 表示浏览器中打开(包含DOM文档)的窗口window 是可以省略的,如 alert();window.alert() document 表示任何在浏览器中已经加载好的网页，并作为一个入口去操作网页内容（也就是DOM tree）document 对象是 window 对象的一部分,如 document.body;window.do">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS宽高">
+<meta property="og:url" content="http://likecc.top/2018/08/15/JS宽高/index.html">
+<meta property="og:site_name" content="聪明的匆匆">
+<meta property="og:description" content="两个问题1.window 和 document 的区别?window 表示浏览器中打开(包含DOM文档)的窗口window 是可以省略的,如 alert();window.alert() document 表示任何在浏览器中已经加载好的网页，并作为一个入口去操作网页内容（也就是DOM tree）document 对象是 window 对象的一部分,如 document.body;window.do">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/innerWidth&outerWidth.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/innerHeight&outerHeight.gif">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/缩放innerWidth.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/screen.height&screen.availHeight.gif">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/screen.jpg">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/Dimensions-client.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/Dimensions-offset.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/offsetLeft&offsetTop.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/scroll.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/document.documentElement.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/Event对象坐标.jpg">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/Event2.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/getBoundingClientRect.png">
+<meta property="og:image" content="http://likecc.top/2018/08/15/JS宽高/getBoundingClientRect1.png">
+<meta property="og:updated_time" content="2018-09-28T07:21:23.014Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS宽高">
+<meta name="twitter:description" content="两个问题1.window 和 document 的区别?window 表示浏览器中打开(包含DOM文档)的窗口window 是可以省略的,如 alert();window.alert() document 表示任何在浏览器中已经加载好的网页，并作为一个入口去操作网页内容（也就是DOM tree）document 对象是 window 对象的一部分,如 document.body;window.do">
+<meta name="twitter:image" content="http://likecc.top/2018/08/15/JS宽高/innerWidth&outerWidth.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://likecc.top/2018/08/15/JS宽高/"/>
+
+
+  <title>JS宽高 | 聪明的匆匆</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">聪明的匆匆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱我所想</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://likecc.top/2018/08/15/JS宽高/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="聪明的匆匆">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="聪明的匆匆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS宽高</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T09:21:43+00:00">2018-08-15</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h2><p>1.<code>window</code> 和 <code>document</code> 的区别?<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window" target="_blank" rel="noopener">window</a> 表示浏览器中打开(包含DOM文档)的窗口<br>window 是可以省略的,如 <code>alert();window.alert()</code></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document" target="_blank" rel="noopener">document</a> 表示任何在浏览器中已经加载好的网页，并作为一个入口去操作网页内容（也就是DOM tree）<br>document 对象是 window 对象的一部分,如 <code>document.body;window.document.body</code></p>
+<p>2.<code>window.location</code> 和 <code>document.location</code> 一样吗?<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/location" target="_blank" rel="noopener">window.location</a> 只读属性，返回一个 Location 对象,表示该窗口当前显示文档的URL相关信息</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/location" target="_blank" rel="noopener">document.location</a> 只读属性，返回一个 Location 对象,表示该文档的URL相关信息<br><code>window.location === document.location;//true</code> 即使在 iframe 中也是一样的</p>
+<pre><code>尽管 window.location 是一个只读 Location 对象，你仍然可以赋给它一个 DOMString。
+这意味着您可以在大多数情况下处理 location，就像它是一个字符串一样：window.location = &apos;http://www.example.com&apos;，
+是 window.location.href = &apos;http://www.example.com&apos;的同义词 
+</code></pre><a id="more"></a>
+<h2 id="window-相关宽高"><a href="#window-相关宽高" class="headerlink" title="window 相关宽高"></a>window 相关宽高</h2><h3 id="内部和外部-宽高"><a href="#内部和外部-宽高" class="headerlink" title="内部和外部 宽高"></a>内部和外部 宽高</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/innerWidth" target="_blank" rel="noopener">window.innerWidth</a>: 浏览器视口（viewport）宽度（单位：像素）<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/innerHeight" target="_blank" rel="noopener">window.innerHeight</a>: 浏览器窗口的视口（viewport）高度（单位：像素）<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/outerWidth" target="_blank" rel="noopener">window.outerWidth</a>: 整个浏览器窗口的宽度，包括侧边栏（如果存在）、窗口镶边（window chrome）和调正窗口大小的边框（window resizing borders/handles）<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/outerHeight" target="_blank" rel="noopener">window.outerHeight</a>: 整个浏览器窗口的高度（单位：像素），包括侧边栏（如果存在）、窗口镶边（window chrome）和窗口调正边框（window resizing borders/handles）。</p>
+<p><img src="./innerWidth&amp;outerWidth.png" alt="innerWidth&amp;outerWidth"><br><img src="./innerHeight&amp;outerHeight.gif" alt="innerHeight&amp;outerHeight"></p>
+<pre><code>window.innerWidth:浏览器视口（viewport）宽度（单位：像素），如果存在垂直滚动条则包括它。
+</code></pre><p>大部分情况下 <code>innerWidth&amp;outerWidth</code>是相等的<br><code>innerWidth&amp;innerHeight</code> 表示的是浏览器视口(viewport)宽高, 故受缩放影响(浏览器缩放,windowsDPI设置)<br><img src="./缩放innerWidth.png" alt="缩放innerWidth"></p>
+<h3 id="Screen-相关信息"><a href="#Screen-相关信息" class="headerlink" title="Screen 相关信息"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen" target="_blank" rel="noopener">Screen</a> 相关信息</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/availHeight" target="_blank" rel="noopener">window.screen.availHeight</a>: 浏览器窗口在屏幕上可占用的垂直空间<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/availWidth" target="_blank" rel="noopener">window.screen.availWidth</a>: 浏览器窗口在屏幕上可占用的水平空间<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/width" target="_blank" rel="noopener">window.screen.width</a>: 屏幕的宽度<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/height" target="_blank" rel="noopener">window.screen.height</a>: 屏幕的高度<br><a href="https://www.w3cschool.cn/jsref/prop-win-screenleft.html" target="_blank" rel="noopener">window.screenTop</a>: 浏览器窗口相对于屏幕顶部的距离<br><a href="https://www.w3cschool.cn/jsref/prop-win-screenleft.html" target="_blank" rel="noopener">window.screenLeft</a>: 浏览器窗口相对于屏幕左边的距离<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/availTop" target="_blank" rel="noopener">window.screen.availTop</a>: 浏览器窗口在屏幕上的可占用空间上边距离屏幕上边界的像素值<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen/availLeft" target="_blank" rel="noopener">window.screen.availLeft</a>: 浏览器可用空间左边距离屏幕（系统桌面）左边界的距离</p>
+<p><img src="./screen.height&amp;screen.availHeight.gif" alt="screen.height&amp;screen.availHeight"><br><img src="./screen.jpg" alt="screen"></p>
+<h2 id="document-相关宽高"><a href="#document-相关宽高" class="headerlink" title="document 相关宽高"></a>document 相关宽高</h2><h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight" target="_blank" rel="noopener">Element.clientHeight</a>: 元素的可视部分高度,padding+content,但不包括水平滚动条、边框和外边距<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientWidth" target="_blank" rel="noopener">Element.clientWidth</a>: 元素的可视部分宽度,padding+content,但不包括垂直滚动条、边框和外边距<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientLeft" target="_blank" rel="noopener">Element.clientLeft</a>: 元素的左边框的宽度,border-left的border-width<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientTop" target="_blank" rel="noopener">Element.clientTop</a>: 元素的上边框的高度度,border-top的border-width</p>
+<p><img src="./Dimensions-client.png" alt="Dimensions-client"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var w= document.documentElement.clientWidth || document.body.clientWidth;</span><br><span class="line">var h= document.documentElement.clientHeight || document.body.clientHeight;</span><br></pre></td></tr></table></figure>
+<h3 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent" target="_blank" rel="noopener">HTMLElement.offsetParent</a>: 返回一个指向最近的（closest，指包含层级上的最近）包含该元素的定位元素。如果没有定位的元素，则 offsetParent 为最近的 table, table cell 或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 “none” 时，offsetParent 返回 null。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetHeight" target="_blank" rel="noopener">HTMLElement.offsetHeight</a>: 该元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetWidth" target="_blank" rel="noopener">HTMLElement.offsetWidth</a>: 元素的布局宽度。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetLeft" target="_blank" rel="noopener">HTMLElement.offsetLeft</a>: 当前元素左上角相对于  HTMLElement.offsetParent 节点的左边界偏移的像素值。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener">HTMLElement.offsetTop</a>: 当前元素相对于其 offsetParent 元素的顶部的距离。</p>
+<p><img src="./Dimensions-offset.png" alt="Dimensions-offset"><br><img src="./offsetLeft&amp;offsetTop.png" alt="offsetLeft&amp;offsetTop"></p>
+<h3 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight" target="_blank" rel="noopener">Element.scrollHeight</a>: ,当内容小于 clientHeight 时 scrollHeight == clientHeight, 当内容大于 clientHeight 时, scrollHeight 表示元素内容的实际高度<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollWidth" target="_blank" rel="noopener">Element.scrollWidth</a>: 当内容小于 clientHeight 时 scrollWidth == clientWidth, 当内容大于 clientWidth 时, scrollWidth 表示元素内容的实际宽度<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">Element.scrollTop</a>: 元素被卷起的高度<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollLeft" target="_blank" rel="noopener">Element.scrollLeft</a>: 元素被卷起的宽度</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">    width: 500px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    border:10px solid #2a6caa;</span><br><span class="line">    margin: 50px;</span><br><span class="line">&#125;</span><br><span class="line">#elem&#123;</span><br><span class="line">    width: 150px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    overflow: auto;</span><br><span class="line">    margin:100px;</span><br><span class="line">    border:1px solid #779;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 当<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="./scroll.png" alt="scroll"></p>
+<p>可是<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE &gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="./document.documentElement.png" alt="documentElement"></p>
+<h3 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'clientX: '</span>+event.clientX,<span class="string">', clientY: '</span>+event.clientY);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'screenX: '</span>+event.screenX,<span class="string">', screenY: '</span>+event.screenY);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'offsetX: '</span>+event.offsetX,<span class="string">', offsetY: '</span>+event.offsetY);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'pageX: '</span>+event.pageX,<span class="string">', pageY: '</span>+event.pageY);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'x: '</span>+event.x,<span class="string">', y: '</span>+event.y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="./Event对象坐标.jpg" alt="Event对象坐标"><br><img src="./Event2.png" alt="Event2"></p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><p>何时:</p>
+<pre><code>元素距离文档顶部距离 小于 文档可视区域
+</code></pre><p>文档可视区域(<code>window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight</code>)<br>元素距离文档顶部距离<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">Element.getBoundingClientRect()</a></p>
+<p><img src="./getBoundingClientRect.png" alt="getBoundingClientRect"><br><img src="./getBoundingClientRect1.png" alt="getBoundingClientRect()"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 图片加载 */</span></span><br><span class="line"><span class="keyword">const</span> imageLoad = &#123;</span><br><span class="line">            setSrc: <span class="function"><span class="keyword">function</span> (<span class="params">el, src</span>) </span>&#123;</span><br><span class="line">                el.src = src;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 是否加载 */</span></span><br><span class="line"><span class="keyword">const</span> imageIsLoad = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> clientHeight = <span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight;</span><br><span class="line">    <span class="keyword">var</span> elemTop = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">elem</span>) </span>&#123;</span><br><span class="line">        elemTop = elem.getBoundingClientRect().top;</span><br><span class="line">        <span class="keyword">return</span> elemTop &lt; clientHeight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> imagesScrollLoad = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> imgs = <span class="built_in">Array</span>.from(<span class="built_in">document</span>.querySelectorAll(<span class="string">'img'</span>));</span><br><span class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!timer&amp;&amp;imgs.length)&#123;</span><br><span class="line">            timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                timer = <span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">const</span> i <span class="keyword">in</span> imgs) &#123;</span><br><span class="line">                    imageIsLoad(imgs[i])&amp;&amp;</span><br><span class="line">                    (imageLoad.setSrc(imgs[i], imgs[i].getAttribute(<span class="string">'data-src'</span>)),imgs.splice(i, <span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="number">500</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onscroll = imagesScrollLoad;</span><br></pre></td></tr></table></figure>
+<h3 id="是否滚动到顶部"><a href="#是否滚动到顶部" class="headerlink" title="是否滚动到顶部"></a>是否滚动到顶部</h3><p>何时:</p>
+<pre><code>Element.scrollTop == 0
+</code></pre><h3 id="是否滚动到底部"><a href="#是否滚动到底部" class="headerlink" title="是否滚动到底部"></a>是否滚动到底部</h3><p>何时:</p>
+<pre><code>元素可视区域 + Element.scrollTop &gt;= Element.scrollHeight
+</code></pre><h3 id="滚动轴宽度计算"><a href="#滚动轴宽度计算" class="headerlink" title="滚动轴宽度计算"></a>滚动轴宽度计算</h3><p>何时:</p>
+<pre><code>定义一个元素 `overflow-y:scroll`
+1.Element.offsetWidth - clientWidth
+2.元素无滚动轴状态下 clientWidth - 有滚动轴状态下 clientWidth
+Element.remove()
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 计算滚动轴宽度</span></span><br><span class="line"><span class="comment">* @return Number </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScrollBarWidth</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> elem = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>),</span><br><span class="line">    noScrollBarClientWidth,</span><br><span class="line">    haveScrollBarClientWidth,</span><br><span class="line">    scrollBarWidth,</span><br><span class="line">    styles=&#123;</span><br><span class="line">        width:<span class="string">'100px'</span>,</span><br><span class="line">        height:<span class="string">'100px'</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> styles) &#123;</span><br><span class="line">        <span class="keyword">if</span> (styles.hasOwnProperty(key)) &#123;</span><br><span class="line">            elem.style[key] = styles[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    noScrollBarClientWidth = elem.clientWidth;</span><br><span class="line">    elem.style.overflowY = <span class="string">'scroll'</span>;</span><br><span class="line">    haveScrollBarClientWidth = elem.clientWidth;</span><br><span class="line">    scrollBarWidth = noScrollBarClientWidth - haveScrollBarClientWidth;</span><br><span class="line">    elem.remove();</span><br><span class="line">    <span class="keyword">return</span> scrollBarWidth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Tip:mac 系统下滚动轴宽度为 0</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.imooc.com/learn/608" target="_blank" rel="noopener">JS/jQuery宽高的理解和应用</a><br><a href="https://segmentfault.com/a/1190000002545307" target="_blank" rel="noopener">JavaScript中的各种宽高以及位置总结</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/03/react-native应用角标/" rel="next" title="react-native应用角标">
+                <i class="fa fa-chevron-left"></i> react-native应用角标
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">聪明的匆匆</p>
+              <p class="site-description motion-element" itemprop="description">权当笔记,如伤过客,诚挚抱歉。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bqdcc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bqdcc@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两个问题"><span class="nav-number">1.</span> <span class="nav-text">两个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-相关宽高"><span class="nav-number">2.</span> <span class="nav-text">window 相关宽高</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内部和外部-宽高"><span class="nav-number">2.1.</span> <span class="nav-text">内部和外部 宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-相关信息"><span class="nav-number">2.2.</span> <span class="nav-text">Screen 相关信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document-相关宽高"><span class="nav-number">3.</span> <span class="nav-text">document 相关宽高</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#client"><span class="nav-number">3.1.</span> <span class="nav-text">client</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offset"><span class="nav-number">3.2.</span> <span class="nav-text">offset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scroll"><span class="nav-number">3.3.</span> <span class="nav-text">scroll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event"><span class="nav-number">3.4.</span> <span class="nav-text">Event</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">4.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#懒加载"><span class="nav-number">4.1.</span> <span class="nav-text">懒加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否滚动到顶部"><span class="nav-number">4.2.</span> <span class="nav-text">是否滚动到顶部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否滚动到底部"><span class="nav-number">4.3.</span> <span class="nav-text">是否滚动到底部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滚动轴宽度计算"><span class="nav-number">4.4.</span> <span class="nav-text">滚动轴宽度计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">聪明的匆匆</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">命中因怯暖，不敢向卿开，春来抱死赴尘埃。</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

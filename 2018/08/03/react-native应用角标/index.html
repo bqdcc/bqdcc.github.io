@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.0.1">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+  
+  <meta name="keywords" content="react-native,android," />
+
+
+<meta name="description" content="角标应用角标是iOS的一个特色,原生Android并不支持。第三方深度定制过的android系统有此类功能,如：三星、小米、魅族、华为等。各方产商定制方法各不相同,我选择使用第三方开源的项目实现。 环境123&quot;react&quot;: &quot;16.3.1&quot;,&quot;react-native&quot;: &quot;0.55.4&quot;,&quot;ShortcutBadger&quot;:&quot;1.1.22&quot; // 这个不是 package.json 的 depe">
+<meta name="keywords" content="react-native,android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native应用角标">
+<meta property="og:url" content="http://likecc.top/2018/08/03/react-native应用角标/index.html">
+<meta property="og:site_name" content="聪明的匆匆">
+<meta property="og:description" content="角标应用角标是iOS的一个特色,原生Android并不支持。第三方深度定制过的android系统有此类功能,如：三星、小米、魅族、华为等。各方产商定制方法各不相同,我选择使用第三方开源的项目实现。 环境123&quot;react&quot;: &quot;16.3.1&quot;,&quot;react-native&quot;: &quot;0.55.4&quot;,&quot;ShortcutBadger&quot;:&quot;1.1.22&quot; // 这个不是 package.json 的 depe">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/目录结构.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/settings1.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/build.gradle.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/app-build.gradle.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/新建类.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/新建类1.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/badge.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/badge.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/ShortcutBadger2.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/目录结构2.png">
+<meta property="og:image" content="http://likecc.top/2018/08/03/react-native应用角标/ShortcutBadger.png">
+<meta property="og:updated_time" content="2018-09-28T07:21:23.026Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-native应用角标">
+<meta name="twitter:description" content="角标应用角标是iOS的一个特色,原生Android并不支持。第三方深度定制过的android系统有此类功能,如：三星、小米、魅族、华为等。各方产商定制方法各不相同,我选择使用第三方开源的项目实现。 环境123&quot;react&quot;: &quot;16.3.1&quot;,&quot;react-native&quot;: &quot;0.55.4&quot;,&quot;ShortcutBadger&quot;:&quot;1.1.22&quot; // 这个不是 package.json 的 depe">
+<meta name="twitter:image" content="http://likecc.top/2018/08/03/react-native应用角标/目录结构.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://likecc.top/2018/08/03/react-native应用角标/"/>
+
+
+  <title>react-native应用角标 | 聪明的匆匆</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">聪明的匆匆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱我所想</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://likecc.top/2018/08/03/react-native应用角标/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="聪明的匆匆">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="聪明的匆匆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">react-native应用角标</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T15:04:10+00:00">2018-08-03</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="角标"><a href="#角标" class="headerlink" title="角标"></a>角标</h2><p>应用角标是iOS的一个特色,原生Android并不支持。<br>第三方深度定制过的android系统有此类功能,如：三星、小米、魅族、华为等。<br>各方产商定制方法各不相同,我选择使用第三方开源的项目实现。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"react": "16.3.1",</span><br><span class="line">"react-native": "0.55.4",</span><br><span class="line">"ShortcutBadger":"1.1.22" // 这个不是 package.json 的 dependencies</span><br></pre></td></tr></table></figure>
+<h2 id="ShortcutBadger-引入"><a href="#ShortcutBadger-引入" class="headerlink" title="ShortcutBadger 引入"></a>ShortcutBadger 引入</h2><p>1.下载<br>通过 git<br><code>git clone https://github.com/leolin310148/ShortcutBadger.git</code><br>或 直接下载zip文件<br><a href="https://github.com/leolin310148/ShortcutBadger" target="_blank" rel="noopener">ShortcutBadger github地址</a><br>2.解压 将文件放入工程 android 文件夹中<br><img src="/2018/08/03/react-native应用角标/目录结构.png" title="react-native应用角标"><br>也可将文件放在其他位置</p>
+<a id="more"></a>
+<h2 id="文件修改"><a href="#文件修改" class="headerlink" title="文件修改"></a>文件修改</h2><p>1.android/settings.gradle<br>文件中加入<br><code>include &#39;:ShortcutBadger&#39;</code><br><img src="/2018/08/03/react-native应用角标/settings1.png" title="react-native应用角标"><br>如果 ShortcutBadger 未放在 android 文件夹中<br>需要添加<br><code>project(&#39;:ShortcutBadger&#39;).projectDir = new File(rootProject.projectDir, &#39;此处为相对于 settings.gradle 文件的地址&#39;)</code></p>
+<p>2.android/build.gradle<br>将 mavenCentral 添加到构建脚本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenCentral()</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<img src="/2018/08/03/react-native应用角标/build.gradle.png" title="react-native应用角标">
+<p>3.android/app/build.gradle<br>为 ShortcutBadger 添加依赖项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile &quot;me.leolin:ShortcutBadger:1.1.22@aar&quot;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">....</span><br></pre></td></tr></table></figure></p>
+<img src="/2018/08/03/react-native应用角标/app-build.gradle.png" title="react-native应用角标">
+<p>4.android/app/src/main/AndroidManifest.xml<br>添加 app 权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    package=&quot;com.jgapp&quot;&gt;</span><br><span class="line">    ....</span><br><span class="line">    &lt;uses-permission android:name=&quot;com.sec.android.provider.badge.permission.READ&quot; /&gt;</span><br><span class="line">    &lt;uses-permission android:name=&quot;com.sec.android.provider.badge.permission.WRITE&quot; /&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="实现原生与ReactNative通信"><a href="#实现原生与ReactNative通信" class="headerlink" title="实现原生与ReactNative通信"></a>实现原生与ReactNative通信</h2><p>android 通过 Android Studio 编辑(我是这么做的,当然其他编辑器也可以)<br><img src="/2018/08/03/react-native应用角标/新建类.png" title="react-native应用角标"><br>1.新建 BadgeModule(类) 继承 ReacContextBaseJavaModule<br><img src="/2018/08/03/react-native应用角标/新建类1.png" title="react-native应用角标"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jgapp;<span class="comment">//包名 请更改</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.facebook.react.bridge.ReactApplicationContext;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.bridge.ReactContextBaseJavaModule;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.bridge.ReactMethod;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"><span class="comment">//引用外部类 me.leolin.shortcutbadger(包名)ShortcutBadger(类名)</span></span><br><span class="line"><span class="keyword">import</span> me.leolin.shortcutbadger.ShortcutBadger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BadgeModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BadgeModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(reactContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 这个返回的字符串是我们js端调用时会用到的</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Badge"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    *这个方法是我们js端调用的方法，其中的参数可以从js端传过来  如这里我们js端可以类似  Badge.showBadge(2)来调用这个方法</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showBadge</span><span class="params">(<span class="keyword">int</span> badgeNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> success = ShortcutBadger.applyCount(getCurrentActivity(), badgeNum);</span><br><span class="line">        <span class="comment">//toast 框 下面两行可以删除</span></span><br><span class="line">        Toast.makeText(getCurrentActivity(), <span class="string">"Set count="</span> + badgeNum + <span class="string">", success="</span> + success, Toast.LENGTH_SHORT).show();</span><br><span class="line">        System.out.println(success);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    *这个方法是我们js端调用的方法，其中的参数可以从js端传过来  如这里我们js端可以类似  Badge.removeBadge()来调用这个方法</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeBadge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> isSuccess = ShortcutBadger.removeCount(getCurrentActivity());</span><br><span class="line">        <span class="comment">//toast 框 下面两行可以删除</span></span><br><span class="line">        Toast.makeText(getCurrentActivity(),  <span class="string">"success="</span> + isSuccess, Toast.LENGTH_SHORT).show();</span><br><span class="line">        System.out.println(isSuccess);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.定义 BadgePackage(包) 继承 ReactPackage<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jgapp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.facebook.react.bridge.ReactApplicationContext;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.ReactPackage;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.uimanager.ViewManager;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.bridge.NativeModule;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BadgePackage</span> <span class="keyword">implements</span> <span class="title">ReactPackage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;ViewManager&gt; <span class="title">createViewManagers</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;NativeModule&gt; <span class="title">createNativeModules</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        List&lt;NativeModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">// 这里就是自己写的module</span></span><br><span class="line">        modules.add(<span class="keyword">new</span> BadgeModule(reactContext));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> modules;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.在 MainApplication 里面注册 BadgePackage<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jgapp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Application;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.facebook.react.ReactApplication;</span><br><span class="line"><span class="keyword">import</span> com.beefe.picker.PickerViewPackage;</span><br><span class="line"><span class="keyword">import</span> com.imagepicker.ImagePickerPackage;</span><br><span class="line"><span class="keyword">import</span> com.oblador.vectoricons.VectorIconsPackage;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.ReactNativeHost;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.ReactPackage;</span><br><span class="line"><span class="keyword">import</span> com.facebook.react.shell.MainReactPackage;</span><br><span class="line"><span class="keyword">import</span> com.facebook.soloader.SoLoader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> <span class="keyword">implements</span> <span class="title">ReactApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ReactNativeHost mReactNativeHost = <span class="keyword">new</span> ReactNativeHost(<span class="keyword">this</span>) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">        <span class="keyword">new</span> MainReactPackage(),</span><br><span class="line">        <span class="comment">// 以下三个为react-native的插件相信你认识</span></span><br><span class="line">        <span class="keyword">new</span> PickerViewPackage(),</span><br><span class="line">        <span class="keyword">new</span> ImagePickerPackage(),</span><br><span class="line">        <span class="keyword">new</span> VectorIconsPackage(),</span><br><span class="line">        <span class="comment">// 此处为添加的package</span></span><br><span class="line">        <span class="keyword">new</span> BadgePackage()</span><br><span class="line">    );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getJSMainModuleName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ReactNativeHost <span class="title">getReactNativeHost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mReactNativeHost;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate();</span><br><span class="line">    SoLoader.init(<span class="keyword">this</span>, <span class="comment">/* native exopackage */</span> <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ReactNative-中调用"><a href="#ReactNative-中调用" class="headerlink" title="ReactNative 中调用"></a>ReactNative 中调用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NativeModules &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Badge = NativeModules.Badge;</span><br><span class="line"></span><br><span class="line">Badge.showBadge(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<img src="/2018/08/03/react-native应用角标/badge.png" title="react-native应用角标">
+<p><img src="./badge.png" alt="图7"><br>其中 <code>Badge.removeCount()</code> 方法和 <code>Badge.showBadge(0)</code> 其实是一样的 因为…<br><img src="/2018/08/03/react-native应用角标/ShortcutBadger2.png" title="react-native应用角标"></p>
+<h2 id="查看-ShortcutBadger-可使用的方法"><a href="#查看-ShortcutBadger-可使用的方法" class="headerlink" title="查看 ShortcutBadger 可使用的方法"></a>查看 ShortcutBadger 可使用的方法</h2><p>查看 <code>ShortcutBadger.java</code><br><img src="/2018/08/03/react-native应用角标/目录结构2.png" title="react-native应用角标"><br><img src="/2018/08/03/react-native应用角标/ShortcutBadger.png" title="react-native应用角标"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/lqx_sunhan/article/details/80377482" target="_blank" rel="noopener">react-native 结合原生安卓实现角标</a><br><a href="https://blog.csdn.net/u014041033/article/details/50610873" target="_blank" rel="noopener">react-native之module的使用</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag"># react-native</a>
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/Video标签的那些坑/" rel="next" title="Video标签的那些坑">
+                <i class="fa fa-chevron-left"></i> Video标签的那些坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/15/JS宽高/" rel="prev" title="JS宽高">
+                JS宽高 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">聪明的匆匆</p>
+              <p class="site-description motion-element" itemprop="description">权当笔记,如伤过客,诚挚抱歉。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bqdcc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bqdcc@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#角标"><span class="nav-number">1.</span> <span class="nav-text">角标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ShortcutBadger-引入"><span class="nav-number">3.</span> <span class="nav-text">ShortcutBadger 引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件修改"><span class="nav-number">4.</span> <span class="nav-text">文件修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现原生与ReactNative通信"><span class="nav-number">5.</span> <span class="nav-text">实现原生与ReactNative通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactNative-中调用"><span class="nav-number">6.</span> <span class="nav-text">ReactNative 中调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-ShortcutBadger-可使用的方法"><span class="nav-number">7.</span> <span class="nav-text">查看 ShortcutBadger 可使用的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">聪明的匆匆</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">命中因怯暖，不敢向卿开，春来抱死赴尘埃。</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
